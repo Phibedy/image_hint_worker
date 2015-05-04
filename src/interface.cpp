@@ -1,7 +1,7 @@
-#include <image_detection/test.h>
+#include <image_hint_worker/image_hint_worker.h>
 
 extern "C" {
 void* getInstance () {
-    return new ImageDetectionTest();
+    return new ImageHintWorker();
 }
 }
