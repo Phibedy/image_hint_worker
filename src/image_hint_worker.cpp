@@ -10,13 +10,14 @@ bool ImageHintWorker::cycle(){
     //try to find one line
     lms::imaging::find::Line line;
     lms::imaging::find::Pixel pixel(100,100);
-    line.find(pixel,100,0,2,5,20,*gaussBuffer,*debugGraphics);
+    pixel.setImage(debug);
+    line.find(pixel,100,0,2,5,200,*gaussBuffer,*debugGraphics);
     return true;
 }
 
 bool ImageHintWorker::initialize(){
     //just for testing
-    target = datamanager()->readChannel<lms::imaging::Image>(this,"IMAGE");
+    target = datamanager()->readChannel<lms::imaging::Image>(this,"GREY_IMAGE");
     debug = datamanager()->writeChannel<lms::imaging::Image>(this,"DEBUG_IMAGE");
     debugGraphics = new lms::imaging::BGRAImageGraphics(*debug);
     return true;
