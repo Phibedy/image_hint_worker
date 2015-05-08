@@ -6,13 +6,13 @@ bool ImageHintWorker::cycle(){
     lms::imaging::Image *gaussBuffer = new lms::imaging::Image();
     gaussBuffer->resize(target->width(),target->height(),lms::imaging::Format::GREY);
 
-    //debug->resize(target->width(),target->height(),lms::imaging::Format::BGRA);
-    //debug->fill(0);
+    debug->resize(target->width(),target->height(),lms::imaging::Format::BGRA);
+    debug->fill(0);
     //try to find one line
     lms::imaging::find::Line line;
     lms::imaging::find::Pixel pixel(100,100);
     pixel.setImage(debug);
-    line.find(pixel,100,0,2,5,200,*gaussBuffer,*debugGraphics);
+    line.find(pixel,100,0,2,5,600,*gaussBuffer,*debugGraphics);
 
     return true;
 }
