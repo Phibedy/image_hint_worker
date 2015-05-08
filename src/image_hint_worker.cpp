@@ -5,14 +5,14 @@
 bool ImageHintWorker::cycle(){
     lms::imaging::Image *gaussBuffer = new lms::imaging::Image();
     gaussBuffer->resize(target->width(),target->height(),lms::imaging::Format::GREY);
-
+    gaussBuffer->fill(255);
     debug->resize(target->width(),target->height(),lms::imaging::Format::BGRA);
     debug->fill(0);
     //try to find one line
     lms::imaging::find::Line line;
-    lms::imaging::find::Pixel pixel(100,100);
-    pixel.setImage(debug);
-    line.find(pixel,100,0,2,5,600,*gaussBuffer,*debugGraphics);
+    lms::imaging::find::Pixel pixel(240,180);
+    pixel.setImage(const_cast<lms::imaging::Image*>(target));
+    line.find(pixel,100,0,2,10,500,*gaussBuffer,*debugGraphics);
 
     return true;
 }
