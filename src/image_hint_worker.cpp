@@ -10,9 +10,18 @@ bool ImageHintWorker::cycle(){
     debug->fill(0);
     //try to find one line
     lms::imaging::find::Line line;
-    lms::imaging::find::Pixel pixel(240,180);
-    pixel.setImage(const_cast<lms::imaging::Image*>(target));
-    line.find(pixel,100,0,2,10,500,*gaussBuffer,*debugGraphics);
+    lms::imaging::find::Line::LineParam param;
+    param.target = target;
+    param.approxEdge = false;
+    param.gaussBuffer = gaussBuffer;
+    param.lineWidthMax = 10;
+    param.lineWidthMin = 2;
+    param.maxLength = INFINITY;
+    param.searchAngle = 0;
+    param.x = 240;
+    param.y = 180;
+    param.sobelThreshold = 500;
+    line.find(param,*debugGraphics);
 
     return true;
 }
