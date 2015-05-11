@@ -30,6 +30,7 @@ bool ImageHintWorker::initialize(){
     debugGraphics = new lms::imaging::BGRAImageGraphics(*debug);
 
     lms::imaging::find::ImageHint<lms::imaging::find::Line> *hint = new lms::imaging::find::ImageHint<lms::imaging::find::Line>();
+    hint->name = "RIGHT_LINE";
     hint->parameter.target = target;
     hint->parameter.approxEdge = false;
     hint->parameter.lineWidthMax = 10;
@@ -42,13 +43,27 @@ bool ImageHintWorker::initialize(){
     hint->parameter.y = 150;
     hint->parameter.sobelThreshold = 350;
     hint->parameter.stepLengthMin = 2;
-    hint->parameter.stepLengthMax = 50;
+    hint->parameter.stepLengthMax = 20;
+    hint->parameter.lineWidthTransMultiplier = 1;
+    hint->parameter.edge = false;
     //add it
     hintContainer->add(hint);
 
     hint = new lms::imaging::find::ImageHint<lms::imaging::find::Line>(*hint);
+    hint->name = "LEFT_LINE";
     hint->parameter.x = 80;
     hint->parameter.searchAngle = -M_PI;
+    hintContainer->add(hint);
+
+    hint = new lms::imaging::find::ImageHint<lms::imaging::find::Line>(*hint);
+    hint->name = "BOX";
+    hint->parameter.x = 120;
+    hint->parameter.y = 100;
+    hint->parameter.searchAngle = -M_PI_2l*1.5;
+    hint->parameter.stepLengthMax = 5;
+    hint->parameter.lineWidthMax = 5;
+    hint->parameter.maxLength = 20;
+    hint->parameter.edge = true;
     hintContainer->add(hint);
 
     return true;
