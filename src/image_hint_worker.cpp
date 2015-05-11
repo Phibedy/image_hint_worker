@@ -2,6 +2,7 @@
 #include <lms/datamanager.h>
 #include <lms/imaging/find/line.h>
 #include <lms/imaging/draw_debug.h>
+#include <lms/imaging/image_factory.h>
 bool ImageHintWorker::cycle(){
     lms::imaging::Image *gaussBuffer = new lms::imaging::Image();
     gaussBuffer->resize(target->width(),target->height(),lms::imaging::Format::GREY);
@@ -18,11 +19,13 @@ bool ImageHintWorker::cycle(){
     param.lineWidthMin = 2;
     param.maxLength = INFINITY;
     param.searchAngle = 0;
+    param.searchLength = 100;
     param.x = 240;
-    param.y = 180;
-    param.sobelThreshold = 500;
+    param.y = 200;
+    param.sobelThreshold = 250;
+    param.stepLengthMin = 5;
+    param.stepLengthMax = 70;
     line.find(param,*debugGraphics);
-
     return true;
 }
 
