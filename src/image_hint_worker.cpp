@@ -30,12 +30,12 @@ bool ImageHintWorker::initialize(){
     debugGraphics = new lms::imaging::BGRAImageGraphics(*debug);
 
     lms::imaging::find::ImageHint<lms::imaging::find::Line> *hint = new lms::imaging::find::ImageHint<lms::imaging::find::Line>();
-    hint->name = "RIGHT_LINE";
+    hint->name = "RIGHT_LANE";
     hint->parameter.target = target;
     hint->parameter.approxEdge = false;
     hint->parameter.lineWidthMax = 10;
     hint->parameter.lineWidthMin = 2;
-    hint->parameter.maxLength = INFINITY;
+    hint->parameter.maxLength = 100;
     hint->parameter.searchAngle = 0;
     hint->parameter.searchLength = 100;
     hint->parameter.gaussBuffer = gaussBuffer;
@@ -50,7 +50,7 @@ bool ImageHintWorker::initialize(){
     hintContainer->add(hint);
 
     hint = new lms::imaging::find::ImageHint<lms::imaging::find::Line>(*hint);
-    hint->name = "LEFT_LINE";
+    hint->name = "LEFT_LANE";
     hint->parameter.x = 80;
     hint->parameter.searchAngle = -M_PI;
     hintContainer->add(hint);
