@@ -41,7 +41,7 @@ bool ImageHintWorker::initialize(){
     hint->parameter.gaussBuffer = gaussBuffer;
     hint->parameter.x = 240;
     hint->parameter.y = 150;
-    hint->parameter.sobelThreshold = 350;
+    hint->parameter.sobelThreshold = 250;
     hint->parameter.stepLengthMin = 2;
     hint->parameter.stepLengthMax = 20;
     hint->parameter.lineWidthTransMultiplier = 1;
