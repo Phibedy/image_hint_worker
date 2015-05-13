@@ -32,10 +32,10 @@ bool ImageHintWorker::initialize(){
     lms::imaging::find::ImageHint<lms::imaging::find::Line> *hint = new lms::imaging::find::ImageHint<lms::imaging::find::Line>();
     hint->name = "RIGHT_LANE";
     hint->parameter.target = target;
+    hint->parameter.maxLength = 300;
     hint->parameter.approxEdge = false;
     hint->parameter.lineWidthMax = 10;
     hint->parameter.lineWidthMin = 2;
-    hint->parameter.maxLength = 100;
     hint->parameter.searchAngle = 0;
     hint->parameter.searchLength = 100;
     hint->parameter.gaussBuffer = gaussBuffer;
@@ -64,7 +64,7 @@ bool ImageHintWorker::initialize(){
     hint->parameter.lineWidthMax = 5;
     hint->parameter.maxLength = 20;
     hint->parameter.edge = true;
-    hintContainer->add(hint);
+    //hintContainer->add(hint);
 
     return true;
 }
