@@ -10,8 +10,6 @@ class ImageHintWorker:public lms::Module{
     lms::imaging::Image *debug;
     lms::imaging::BGRAImageGraphics *debugGraphics;
     lms::imaging::find::HintContainer *hintContainer;
-
-    lms::imaging::Image *gaussBuffer;
 public:
     bool initialize();
     bool deinitialize();
