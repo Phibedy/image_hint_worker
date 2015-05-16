@@ -1,9 +1,9 @@
 #include <image_hint_worker/image_hint_worker.h>
 #include <lms/datamanager.h>
-#include <lms/imaging/find/line.h>
+#include <lms/imaging_detection/line.h>
 #include <lms/imaging/draw_debug.h>
 #include <lms/imaging/image_factory.h>
-#include <lms/imaging/find/image_hint.h>
+#include <lms/imaging_detection/image_hint.h>
 bool ImageHintWorker::cycle(){
     debug->fill(0);
     for(lms::imaging::find::ImageHintBase *base: hintContainer->hints){

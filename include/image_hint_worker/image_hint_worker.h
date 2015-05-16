@@ -4,7 +4,7 @@
 #include <lms/module.h>
 #include <lms/imaging/image.h>
 #include <lms/imaging/graphics.h>
-#include "lms/imaging/find/image_hint.h"
+#include "lms/imaging_detection/image_hint.h"
 class ImageHintWorker:public lms::Module{
     const lms::imaging::Image *target;
     lms::imaging::Image *debug;
