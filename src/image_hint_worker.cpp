@@ -7,6 +7,10 @@
 bool ImageHintWorker::cycle(){
     debug->fill(0);
     for(lms::imaging::find::ImageHintBase *base: hintContainer->hints){
+        if(base->getTarget() == nullptr){
+            logger.error("target is null!!!");
+            return true;
+        }
         debug->resize(base->getTarget()->width(),base->getTarget()->height(),lms::imaging::Format::BGRA);
         base->find(*debugGraphics);
     }
