@@ -4,25 +4,37 @@
 #include <lms/imaging/draw_debug.h>
 #include <lms/imaging/image_factory.h>
 #include <lms/imaging_detection/image_hint.h>
+#include "lms/imaging/draw_debug.h"
 bool ImageHintWorker::cycle(){
+
+#if IMAGING_DRAW_DEBUG == 1
     debug->fill(0);
+#endif
     for(lms::imaging::find::ImageHintBase *base: hintContainer->hints){
         if(base->getTarget() == nullptr){
             logger.error("target is null!!!");
             return true;
         }
+
+#if IMAGING_DRAW_DEBUG == 1
         debug->resize(base->getTarget()->width(),base->getTarget()->height(),lms::imaging::Format::BGRA);
         base->find(*debugGraphics);
+#else
+        base->find();
+#endif
     }
 
     return true;
 }
 
 bool ImageHintWorker::initialize(){
-    //just for testing
-    debug = datamanager()->writeChannel<lms::imaging::Image>(this,"DEBUG_IMAGE");
     hintContainer = datamanager()->writeChannel<lms::imaging::find::HintContainer>(this,"HINTS");
+
+    //just for testing
+#ifdef DRAWDEBUG
+    debug = datamanager()->writeChannel<lms::imaging::Image>(this,"DEBUG_IMAGE");
     debugGraphics = new lms::imaging::BGRAImageGraphics(*debug);
+#endif
     return true;
 }
 
