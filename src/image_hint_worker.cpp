@@ -6,17 +6,17 @@
 #include <lms/imaging_detection/image_hint.h>
 #include "lms/imaging/draw_debug.h"
 bool ImageHintWorker::cycle(){
-
 #if IMAGING_DRAW_DEBUG == 1
-    debug->fill(0);
+        //clear the debug image
+        debug->fill(0);
 #endif
     for(lms::imaging::find::ImageHintBase *base: hintContainer->hints){
         if(base->getTarget() == nullptr){
             logger.error("target is null!!!");
             return true;
         }
-
 #if IMAGING_DRAW_DEBUG == 1
+        //TODO: shitty code, but as it's just for debugging it's ok
         debug->resize(base->getTarget()->width(),base->getTarget()->height(),lms::imaging::Format::BGRA);
         base->find(*debugGraphics);
 #else
@@ -30,7 +30,6 @@ bool ImageHintWorker::cycle(){
 bool ImageHintWorker::initialize(){
     hintContainer = datamanager()->writeChannel<lms::imaging::find::HintContainer>(this,"HINTS");
 
-    //just for testing
 #ifdef DRAWDEBUG
     debug = datamanager()->writeChannel<lms::imaging::Image>(this,"DEBUG_IMAGE");
     debugGraphics = new lms::imaging::BGRAImageGraphics(*debug);
