@@ -6,7 +6,7 @@
 #include <lms/imaging_detection/image_hint.h>
 #include "lms/imaging/draw_debug.h"
 bool ImageHintWorker::cycle(){
-#if IMAGING_DRAW_DEBUG == 1
+#ifdef DRAWDEBUG
         //clear the debug image
         debug->fill(0);
 #endif
@@ -15,7 +15,7 @@ bool ImageHintWorker::cycle(){
             logger.error("target is null!!!");
             return true;
         }
-#if IMAGING_DRAW_DEBUG == 1
+#ifdef DRAWDEBUG
         //TODO: shitty code, but as it's just for debugging it's ok
         debug->resize(base->getTarget()->width(),base->getTarget()->height(),lms::imaging::Format::BGRA);
         base->find(*debugGraphics);
