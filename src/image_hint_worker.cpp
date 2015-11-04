@@ -10,7 +10,7 @@ bool ImageHintWorker::cycle(){
         //clear the debug image
         debug->fill(0);
 #endif
-    for(lms::imaging::find::ImageHintBase *base: hintContainer->hints){
+    for(lms::imaging::detection::ImageHintBase *base: hintContainer->hints){
         if(base->getTarget() == nullptr){
             logger.error("target is null!!!");
             return true;
@@ -28,7 +28,7 @@ bool ImageHintWorker::cycle(){
 }
 
 bool ImageHintWorker::initialize(){
-    hintContainer = datamanager()->writeChannel<lms::imaging::find::HintContainer>(this,"HINTS");
+    hintContainer = datamanager()->writeChannel<lms::imaging::detection::HintContainer>(this,"HINTS");
 
 #ifdef DRAWDEBUG
     debug = datamanager()->writeChannel<lms::imaging::Image>(this,"DEBUG_IMAGE");
