@@ -10,6 +10,7 @@ bool ImageHintWorker::cycle(){
         //clear the debug image
         debug->fill(0);
 #endif
+        //TODO vector of pointers doesn't care if it's const...
     for(lms::imaging::detection::ImageHintBase *base: hintContainer->hints){
         if(base->getTarget() == nullptr){
             logger.error("target is null!!!");
@@ -29,7 +30,7 @@ bool ImageHintWorker::cycle(){
 
 bool ImageHintWorker::initialize(){
     //TODO not sure if readChannel should work as it modifies the HintContainer?!
-    hintContainer = datamanager()->readChannel<lms::imaging::detection::HintContainer>(this,"HINTS");
+    hintContainer = datamanager()->writeChannel<lms::imaging::detection::HintContainer>(this,"HINTS");
 
 #ifdef DRAWDEBUG
     debug = datamanager()->writeChannel<lms::imaging::Image>(this,"DEBUG_IMAGE");

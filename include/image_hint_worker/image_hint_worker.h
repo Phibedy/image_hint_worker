@@ -9,7 +9,7 @@ class ImageHintWorker:public lms::Module{
     const lms::imaging::Image *target;
     lms::WriteDataChannel<lms::imaging::Image> debug;
     lms::imaging::BGRAImageGraphics *debugGraphics;
-    lms::ReadDataChannel<lms::imaging::detection::HintContainer> hintContainer;
+    lms::WriteDataChannel<lms::imaging::detection::HintContainer> hintContainer;
 public:
     bool initialize();
     bool deinitialize();
