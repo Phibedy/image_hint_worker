@@ -28,7 +28,8 @@ bool ImageHintWorker::cycle(){
 }
 
 bool ImageHintWorker::initialize(){
-    hintContainer = datamanager()->writeChannel<lms::imaging::detection::HintContainer>(this,"HINTS");
+    //TODO not sure if readChannel should work as it modifies the HintContainer?!
+    hintContainer = datamanager()->readChannel<lms::imaging::detection::HintContainer>(this,"HINTS");
 
 #ifdef DRAWDEBUG
     debug = datamanager()->writeChannel<lms::imaging::Image>(this,"DEBUG_IMAGE");
