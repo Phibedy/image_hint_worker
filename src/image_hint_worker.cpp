@@ -1,5 +1,4 @@
 #include <image_hint_worker/image_hint_worker.h>
-#include <lms/datamanager.h>
 #include <lms/imaging_detection/line.h>
 #include <lms/imaging/draw_debug.h>
 #include <lms/imaging/image_factory.h>
